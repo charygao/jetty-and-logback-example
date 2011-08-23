@@ -39,8 +39,16 @@
     </sift>
   </appender>
 
-  <root level="info">
-    <appender-ref ref="STDOUT" />
+  <logger name="org.eclipse.jetty" level="DEBUG" additivity="false">
     <appender-ref ref="SIFT" />
+  </logger>
+
+  <logger name="org.eclipse.jetty" level="INFO" additivity="false">
+    <appender-ref ref="STDOUT" />
+  </logger>
+
+  <root level="WARN">
+    <appender-ref ref="STDOUT" />
   </root>
+
 </configuration>
