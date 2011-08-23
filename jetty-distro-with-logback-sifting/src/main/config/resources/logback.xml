@@ -12,7 +12,6 @@
     </encoder>
   </appender>
 
-
   <appender name="SIFT" class="ch.qos.logback.classic.sift.SiftingAppender">
     <!-- in the absence of the class attribute, it is assumed that the
          desired discriminator type is
@@ -39,16 +38,8 @@
     </sift>
   </appender>
 
-  <logger name="org.eclipse.jetty" level="DEBUG" additivity="false">
+  <root level="INFO">
+    <appender-ref ref="STDOUT" />
     <appender-ref ref="SIFT" />
-  </logger>
-
-  <logger name="org.eclipse.jetty" level="INFO" additivity="false">
-    <appender-ref ref="STDOUT" />
-  </logger>
-
-  <root level="WARN">
-    <appender-ref ref="STDOUT" />
   </root>
-
 </configuration>

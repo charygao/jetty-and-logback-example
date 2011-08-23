@@ -9,11 +9,12 @@
     <!-- =========================================================== -->
     <!-- Configure the Jetty Slf4J/MDC Handler                       -->
     <!-- =========================================================== -->
-    <Ref id="Handlers">
-      <Call name="addHandler">
-        <Arg>
-          <New id="mdcHandler" class="org.eclipse.jetty.examples.logging.MDCHandler" />
-        </Arg>
-      </Call>
-    </Ref>
+
+    <Get id="oldhandler" name="handler" />
+
+    <Set name="handler">
+      <New id="mdcHandler" class="org.eclipse.jetty.examples.logging.MDCHandler">
+        <Set name="handler"><Ref id="oldhandler" /></Set>
+      </New>
+    </Set>
 </Configure>

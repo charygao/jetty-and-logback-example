@@ -59,7 +59,7 @@ public class EchoFormServlet extends HttpServlet
                 String name = names.nextElement();
                 String value = req.getParameter(name);
                 out.printf("%s = \"%s\"%n",name,value);
-                LOG.debug("[form] {} = \"{}\"",name,value);
+                LOG.info("[form] {} = \"{}\"",name,value);
             }
             out.println("</pre>");
 
