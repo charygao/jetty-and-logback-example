@@ -12,7 +12,6 @@
   <packaging>pom</packaging>
   <name>Jetty Distro with Logback (Basic Setup)</name>
   <properties>
-    <jetty-version>7.4.5.v20110725</jetty-version>
     <distro-dir>${project.build.directory}/jetty-distro</distro-dir>
   </properties>
   <build>
@@ -90,7 +89,6 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>0.9.29</version>
     </dependency>
   </dependencies>
 </project>

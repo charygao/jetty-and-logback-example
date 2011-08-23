@@ -12,7 +12,6 @@
   <packaging>pom</packaging>
   <name>Jetty Distro with Logback (MDC Sifting Setup)</name>
   <properties>
-    <jetty-version>7.4.5.v20110725</jetty-version>
     <distro-dir>${project.build.directory}/jetty-distro</distro-dir>
   </properties>
   <build>
@@ -52,11 +51,31 @@
               <goal>copy-dependencies</goal>
             </goals>
             <configuration>
+              <excludeTypes>war</excludeTypes>
               <outputDirectory>${distro-dir}/jetty-distribution-${jetty-version}/lib/logging</outputDirectory>
               <overWriteReleases>false</overWriteReleases>
               <overWriteSnapshots>true</overWriteSnapshots>
               <overWriteIfNewer>true</overWriteIfNewer>
               <excludeTransitive>false</excludeTransitive>
+            </configuration>
+          </execution>
+          <execution>
+            <id>install-test-webapp</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.eclipse.jetty.examples</groupId>
+                  <artifactId>jetty-slf4j-test-webapp</artifactId>
+                  <version>${project.version}</version>
+                  <type>war</type>
+                  <destFileName>slf4j-tests.war</destFileName>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${distro-dir}/jetty-distribution-${jetty-version}/webapps</outputDirectory>
             </configuration>
           </execution>
         </executions>
@@ -89,13 +108,18 @@
   <dependencies>
     <dependency>
       <groupId>org.eclipse.jetty.examples</groupId>
+      <artifactId>jetty-slf4j-test-webapp</artifactId>
+      <version>${project.version}</version>
+      <type>war</type>
+    </dependency>
+    <dependency>
+      <groupId>org.eclipse.jetty.examples</groupId>
       <artifactId>jetty-slf4j-mdc-handler</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>0.9.29</version>
     </dependency>
   </dependencies>
 </project>
