@@ -45,6 +45,51 @@
             </configuration>
           </execution>
           <execution>
+            <id>install-extra-configs</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.mortbay.jetty</groupId>
+                  <artifactId>jetty-webapp-logging</artifactId>
+                  <version>${jetty-version}</version>
+                  <classifier>config</classifier>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                </artifactItem>
+              </artifactItems>
+              <outputAbsoluteArtifactFilename>true</outputAbsoluteArtifactFilename>
+              <outputDirectory>${distro-dir}/jetty-distribution-${jetty-version}</outputDirectory>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+          </execution>
+          <execution>
+            <id>install-webapp-logging</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>org.mortbay.jetty</groupId>
+                  <artifactId>jetty-webapp-logging</artifactId>
+                  <version>${jetty-version}</version>
+                  <type>jar</type>
+                  <overWrite>true</overWrite>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${distro-dir}/jetty-distribution-${jetty-version}/lib/logging</outputDirectory>
+              <overWriteReleases>false</overWriteReleases>
+              <overWriteSnapshots>true</overWriteSnapshots>
+              <overWriteIfNewer>true</overWriteIfNewer>
+            </configuration>
+          </execution>
+          <execution>
             <id>install-logback</id>
             <phase>generate-resources</phase>
             <goals>
@@ -106,6 +151,7 @@
     </plugins>
   </build>
   <dependencies>
+    <!-- declaring this here so that the maven reactor builds in the right order -->
     <dependency>
       <groupId>org.eclipse.jetty.examples</groupId>
       <artifactId>jetty-slf4j-test-webapp</artifactId>
