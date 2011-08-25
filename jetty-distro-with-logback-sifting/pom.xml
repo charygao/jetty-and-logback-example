@@ -140,10 +140,14 @@
               <outputDirectory>${distro-dir}/jetty-distribution-${jetty-version}</outputDirectory>
               <resources>
                 <resource>
-                  <directory>src/main/config</directory>
+                  <directory>${project.basedir}/src/main/config</directory>
                   <filtering>false</filtering>
+                  <includes>
+                    <include>**/*</include>
+                  </includes>
                 </resource>
               </resources>
+              <overwrite>true</overwrite>
             </configuration>
           </execution>
         </executions>
