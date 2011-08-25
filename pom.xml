@@ -13,6 +13,7 @@
   </properties>
   <modules>
     <module>jetty-distro-with-logback-basic</module>
+    <module>jetty-distro-with-logback-access</module>
     <module>jetty-distro-with-logback-sifting</module>
     <module>jetty-slf4j-test-webapp</module>
     <module>jetty-slf4j-mdc-handler</module>
@@ -22,6 +23,11 @@
       <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
+        <version>0.9.29</version>
+      </dependency>
+      <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-access</artifactId>
         <version>0.9.29</version>
       </dependency>
       <dependency>
